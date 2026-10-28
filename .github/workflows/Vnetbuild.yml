@@ -1,7 +1,5 @@
 name: Terraform - Create Azure Network
-defaults:
-  run:
-    working-directory: VnetBuild
+
 on:
   workflow_dispatch:
     inputs:
@@ -54,7 +52,7 @@ jobs:
 
     defaults:
       run:
-        working-directory: terraform
+        working-directory: VnetBuild
 
     steps:
 
