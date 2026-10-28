@@ -2,6 +2,18 @@ name: Terraform Azure Resource Group
 
 on:
   workflow_dispatch:
+   inputs:
+      resource_group_name:
+        description: "Enter the Azure Resource Group name"
+        required: true
+        type: string
+
+      location:
+        description: "Enter the Azure location"
+        required: true
+        default: "Central US"
+        type: string
+
 
   push:
     branches:
