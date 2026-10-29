@@ -1,7 +1,4 @@
-output "resource_group_name" {
-  description = "Resource Group Name"
-  value       = azurerm_resource_group.rg.name
-}
+
 
 output "virtual_network_name" {
   description = "Virtual Network Name"
