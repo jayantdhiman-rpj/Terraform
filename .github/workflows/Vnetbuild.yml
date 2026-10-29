@@ -9,17 +9,7 @@ on:
         required: true
         type: string
 
-      location:
-        description: "Azure Region"
-        required: true
-        type: choice
-        default: "UK South"
-        options:
-          - "UK South"
-          - "UK West"
-          - "East US 2"
-          - "Central US"
-
+      
       vnet_name:
         description: "VNet Name"
         required: true
