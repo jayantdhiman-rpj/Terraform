@@ -19,7 +19,12 @@ on:
       vm_size:
         description: "VM Size"
         required: true
-        type: string
+        type: choice
+        options:
+          - Standard_D2s_v5
+          - Standard_D4s_v5
+          - Standard_D8s_v5
+          - Standard_D16s_v5
 
 
 permissions:
