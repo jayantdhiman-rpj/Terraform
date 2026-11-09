@@ -1,4 +1,4 @@
-name: Create Storage Account 
+name: Terraform - Create Storage Account 
 
 on:
   workflow_dispatch:
