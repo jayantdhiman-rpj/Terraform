@@ -1,1 +1,35 @@
 
+name: Terraform - Create Storage Account 
+
+on:
+  workflow_dispatch:
+    inputs:
+
+      resource_group_name:
+        description: "Resource Group Name"
+        required: true
+
+      storage_account_name:
+        description: "Storage Account Name"
+        required: true
+
+      storage_replication:
+        description: "Storage Replication Type"
+        required: true
+        default: "LRS"
+        type: choice
+        options:
+          - LRS
+          - ZRS
+          - GRS
+          - GZRS
+
+      environment:
+        description: "Environment"
+        required: true
+        default: "dev"
+        type: choice
+        options:
+          - dev
+          - test
+          - prod
