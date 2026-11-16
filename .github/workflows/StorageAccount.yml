@@ -24,7 +24,15 @@ on:
           - ZRS
           - GRS
           - GZRS
+  push:
+    branches:
+      - main
+    paths:
+      - "Terraform/**"
 
+permissions:
+  id-token: write
+  contents: read
 jobs:
   terraform:
     runs-on: ubuntu-latest
