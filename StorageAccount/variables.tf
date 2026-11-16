@@ -1,3 +1,7 @@
+variable "subscription_id" {
+  description = "Azure Subscription ID"
+  type        = string
+}
 variable "storage_account_name" {
   type = string
     description = "Azure Storage Account name"
