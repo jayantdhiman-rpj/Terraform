@@ -12,7 +12,6 @@ variable "storage_account_name" {
     error_message = "Storage account name must be 3-24 characters and contain only lowercase letters and numbers."
   }
 }
-}
 
 variable "storage_account_tier" {
   type    = string
