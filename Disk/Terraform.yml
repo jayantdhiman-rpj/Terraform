@@ -1,5 +1,4 @@
-
-name: Terraform - Create Azure Network
+name: Terraform - Create Azure Managed Disk
 
 on:
   workflow_dispatch:
@@ -11,25 +10,20 @@ on:
         type: string
 
       
-      vnet_name:
-        description: "VNet Name"
+      disk_name:
+        description: "Disk Name"
         required: true
         type: string
 
-      vnet_address_space:
-        description: "VNet Address Space - example: 10.10.0.0/16"
+      disk_size_gb:
+        description: "Disk size in GB"
         required: true
-        type: string
+        type: number
 
-      subnet_name:
-        description: "Subnet Name"
-        required: true
-        type: string
-
-      subnet_address_prefix:
-        description: "Subnet Address Prefix - example: 10.10.1.0/24"
-        required: true
-        type: string
+      storage_account_type:
+	    description: "Storage Account:
+		required: true
+		type: string
 
 permissions:
   id-token: write
@@ -43,7 +37,7 @@ jobs:
 
     defaults:
       run:
-        working-directory: VnetBuild
+        working-directory: Disk
 
     steps:
 
@@ -74,11 +68,9 @@ jobs:
           terraform plan \
             -var="subscription_id=${{ secrets.AZURE_SUBSCRIPTION_ID }}" \
             -var="resource_group_name=${{ inputs.resource_group_name }}" \
-            -var="location=${{ inputs.location }}" \
-            -var="vnet_name=${{ inputs.vnet_name }}" \
-            -var="vnet_address_space=${{ inputs.vnet_address_space }}" \
-            -var="subnet_name=${{ inputs.subnet_name }}" \
-            -var="subnet_address_prefix=${{ inputs.subnet_address_prefix }}" \
+            -var="disk_name=${{ inputs.disk_name }}" \
+            -var="disk_size_gb=${{ inputs.disk_size_gb }}" \
+            -var="storage_account_type=${{ inputs.storage_account_type }}" \
             -out=tfplan
 
       - name: Terraform Apply
