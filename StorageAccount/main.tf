@@ -12,8 +12,5 @@ resource "azurerm_storage_account" "stgaccount" {
   account_replication_type = var.storage_replication_type
   }
  
-  tags = {
-    ManagedBy = "Terraform"
-  }
 
 
