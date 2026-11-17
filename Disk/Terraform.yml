@@ -15,7 +15,7 @@ on:
         required: true
         type: string
 
-      disk_size_gb:
+      disk_size:
         description: "Disk size in GB"
         required: true
         type: number
