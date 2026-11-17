@@ -10,12 +10,14 @@ variable "resource_group_name" {
 }
 
 variable "disk_name" {
+  description = "Azure Managed Disk Name"
   type = string
 }
 
-variable "disk_size" {
-  type    = string
-  default = ""
+variable "disk_size_gb" {
+  type    = number
+  default = 4
+  description = "Managed Disk Size in GB"
 }
 
 variable "storage_account_type" {
