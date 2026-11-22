@@ -9,8 +9,8 @@ variable "resource_group_name" {
 }
 
 variable "storage_account_name" {
-  type = string
-    description = "Azure Storage Account name"
+  type        = string
+  description = "Azure Storage Account name"
 
   validation {
     condition = (
