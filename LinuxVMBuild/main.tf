@@ -32,26 +32,28 @@ data "azurerm_resource_group" "rg" {
   name                = var.nic_card_name
   location            = data.azurerm_resource_group.rg.location
   resource_group_name = data.azurerm_resource_group.rg.name
-  }
+  
 
   ip_configuration {
     name                          = "internal"
-    subnet_id                     = data.azurerm_subnet.example.id
+    subnet_id                     = data.azurerm_subnet.subnet.id
     private_ip_address_allocation = "Dynamic"
     }
+  }
 
-  network_interface_ids = [
-    azurerm_network_interface.nic.id
-  ]
-
-  disable_password_authentication = true
+  
 
   resource "azurerm_linux_virtual_machine" "vm" {
   name                = var.vm_name
   resource_group_name = var.resource_group_name
   location            = data.azurerm_resource_group.rg.location
   size                = var.vm_size
-  
+
+  network_interface_ids = [
+    azurerm_network_interface.nic.id
+  ]
+
+   
 
   admin_username = var.admin_username
  
