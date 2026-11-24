@@ -51,3 +51,4 @@ variable "os_disk_size_gb" {
   type        = number
   default     = 64
 }
+
