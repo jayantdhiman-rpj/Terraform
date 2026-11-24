@@ -4,6 +4,11 @@ variable "subscription_id" {
 }
 
 variable "resource_group_name" {
+  description = "Name of the existing Azure Resource Group"
+  type        = string
+}
+
+variable "resource_group_name" {
   description = "Existing Resource Group name"
   type        = string
 }
