@@ -1,4 +1,4 @@
-name: Deploy Azure Linux VM
+Terraform: Deploy Azure Linux VM
 
 on:
   workflow_dispatch:
