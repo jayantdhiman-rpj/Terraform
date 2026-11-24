@@ -1,6 +1,6 @@
 data "azurerm_resource_group" "rg" {
   name = var.resource_group_name
- }
+}
 resource "azurerm_linux_virtual_machine" "vm" {
   name                = var.vm_name
   resource_group_name = var.resource_group_name
