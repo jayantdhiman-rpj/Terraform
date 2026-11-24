@@ -9,6 +9,42 @@ resource "azurerm_linux_virtual_machine" "vm" {
 
   admin_username = var.admin_username
 
+  resource "azurerm_network_interface" "nic" {
+   name = var.nic_name
+   resource_group_name = var.resource_group_name
+   location            = data.azurerm_resource_group.rg.location
+  }
+
+  data "azurerm_virtual_network" "vnet" {
+  name                = var.vnet_name
+  resource_group_name = var.resource_group_name
+  }
+
+  output "virtual_network_id" {
+  value = data.azurerm_virtual_network.vnet.id
+  }
+  
+  data "azurerm_subnet" "subnet" {
+  name                 = var.subnet_name
+  virtual_network_name = var.vnet_name
+  resource_group_name  = var.resource_group_name
+  }
+
+   output "subnet_id" {
+   value = data.azurerm_subnet.subnet.id
+   }
+  
+  resource "azurerm_network_interface" "niccard" {
+  name                = var.nic_card_name
+  location            = data.azurerm_resource_group.rg.location
+  resource_group_name = data.azurerm_resource_group.rg.name
+
+  ip_configuration {
+    name                          = "internal"
+    subnet_id                     = data.azurerm_subnet.example.id
+    private_ip_address_allocation = "Dynamic"
+    }
+
   network_interface_ids = [
     azurerm_network_interface.nic.id
   ]

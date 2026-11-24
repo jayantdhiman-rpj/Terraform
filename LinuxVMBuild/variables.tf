@@ -3,8 +3,6 @@ variable "subscription_id" {
   type        = string
 }
 
-
-
 variable "resource_group_name" {
   description = "Existing Resource Group name"
   type        = string
@@ -52,5 +50,10 @@ variable "os_disk_size_gb" {
   description = "OS disk size"
   type        = number
   default     = 64
+}
+
+variable "nic_card_name" {
+   description = "Nic card name"
+   type = string
 }
 
