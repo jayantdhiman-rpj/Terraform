@@ -4,7 +4,7 @@ data "azurerm_resource_group" "rg" {
 
 
   resource "azurerm_network_interface" "nic" {
-   name = var.nic_name
+   name = var.nic_card_name
    resource_group_name = var.resource_group_name
    location            = data.azurerm_resource_group.rg.location
   }
