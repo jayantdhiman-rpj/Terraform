@@ -1,13 +1,7 @@
 data "azurerm_resource_group" "rg" {
   name = var.resource_group_name
 }
-resource "azurerm_linux_virtual_machine" "vm" {
-  name                = var.vm_name
-  resource_group_name = var.resource_group_name
-  location            = data.azurerm_resource_group.rg.location
-  size                = var.vm_size
 
-  admin_username = var.admin_username
 
   resource "azurerm_network_interface" "nic" {
    name = var.nic_name
@@ -38,6 +32,7 @@ resource "azurerm_linux_virtual_machine" "vm" {
   name                = var.nic_card_name
   location            = data.azurerm_resource_group.rg.location
   resource_group_name = data.azurerm_resource_group.rg.name
+  }
 
   ip_configuration {
     name                          = "internal"
@@ -51,11 +46,15 @@ resource "azurerm_linux_virtual_machine" "vm" {
 
   disable_password_authentication = true
 
-  admin_ssh_key {
-    username   = var.admin_username
-    public_key = var.ssh_public_key
-  }
+  resource "azurerm_linux_virtual_machine" "vm" {
+  name                = var.vm_name
+  resource_group_name = var.resource_group_name
+  location            = data.azurerm_resource_group.rg.location
+  size                = var.vm_size
+  
 
+  admin_username = var.admin_username
+ 
   os_disk {
     caching              = "ReadWrite"
     storage_account_type = "Premium_LRS"
